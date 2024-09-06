@@ -1,5 +1,9 @@
 package main
 
+import (
+	"math"
+)
+
 func mergeSort(nums []int) []int {
 	return mergeRecurse(nums)
 }
@@ -17,35 +21,23 @@ func mergeRecurse(nums []int) []int {
 }
 
 func merge(left []int, right []int) []int {
-	result := make([]int, len(left)+len(right))
 	totalLength := len(left) + len(right)
-	// Walkers
-	l, r := 0, 0
+	result := make([]int, totalLength)
+	leftCopy := append([]int{}, left...)
+	leftCopy = append(leftCopy, math.MaxInt)
 
-	for l+r < totalLength {
-		if r >= len(right) {
-			for l < len(left) {
-				result[l+r] = left[l]
-				l++
-			}
-			break
-		}
-		if l >= len(left) {
-			for r < len(right) {
-				result[l+r] = right[r]
-				r++
-			}
-			break
-		}
-
-		if left[l] > right[r] {
-			result[l+r] = right[r]
-			r++
-		} else {
-			result[l+r] = left[l]
+	rightCopy := append([]int{}, right...)
+	rightCopy = append(rightCopy, math.MaxInt)
+	l := 0
+	r := 0
+	for k := 0; k < totalLength; k++ {
+		if leftCopy[l] <= rightCopy[r] {
+			result[k] = leftCopy[l]
 			l++
+		} else {
+			result[k] = rightCopy[r]
+			r++
 		}
 	}
-
 	return result
 }
