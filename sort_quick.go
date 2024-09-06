@@ -7,30 +7,30 @@ func quickSort(nums []int) []int {
 
 func quickilydickily(nums []int, l, r int) {
 	if l < r {
-		pivot := partition(nums, l, r)
-		quickilydickily(nums, l, pivot-1)
-		quickilydickily(nums, pivot+1, r)
+		p := partition(nums, l, r)
+		quickilydickily(nums, l, p-1)
+		quickilydickily(nums, p+1, r)
 	}
-
 }
 
 func partition(nums []int, l, r int) int {
-	p := nums[r]
+	pivot := nums[r]
 
-	i := l - 1
+	slow := l - 1
 
 	for l < r {
-		if nums[l] <= p {
-			i++
-			tmp := nums[i]
-			nums[i] = nums[l]
-			nums[l] = tmp
+		if nums[l] <= pivot {
+			slow++
+
+			tmp := nums[l]
+			nums[l] = nums[slow]
+			nums[slow] = tmp
 		}
 		l++
 	}
+	slow++
+	nums[r] = nums[slow]
+	nums[slow] = pivot
 
-	nums[r] = nums[i+1]
-	nums[i+1] = p
-
-	return i + 1
+	return slow
 }
