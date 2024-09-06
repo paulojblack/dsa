@@ -1,4 +1,4 @@
-package main
+package sort_algos
 
 func insertionSortAsc(nums []int) []int {
 	for i := 1; i < len(nums); i++ {

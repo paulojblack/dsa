@@ -1,4 +1,4 @@
-package main
+package sort_algos
 
 import (
 	"math"

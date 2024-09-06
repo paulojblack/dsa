@@ -1,6 +1,6 @@
-package main
+package sort_algos
 
-func quickSort(nums []int) []int {
+func QuickSort(nums []int) []int {
 	quickilydickily(nums, 0, len(nums)-1)
 	return nums
 }

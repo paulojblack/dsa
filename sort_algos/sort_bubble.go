@@ -1,4 +1,4 @@
-package main
+package sort_algos
 
 func bubbleSort(nums []int) []int {
 	for i := 0; i < len(nums); i++ {

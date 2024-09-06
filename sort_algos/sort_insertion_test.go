@@ -1,4 +1,4 @@
-package main
+package sort_algos
 
 import (
 	"fmt"
@@ -7,15 +7,7 @@ import (
 )
 
 func TestInsertionSortAsc(t *testing.T) {
-	testCases := []struct {
-		in   []int
-		want []int
-	}{
-		{[]int{5, 2, 1, 7, 3, 10, 3, 5, 4}, []int{1, 2, 3, 3, 4, 5, 5, 7, 10}},
-		{[]int{1, 2, 1, 1, 1}, []int{1, 1, 1, 1, 2}},
-	}
-
-	for _, tc := range testCases {
+	for _, tc := range TestCases {
 		sorted := insertionSortAsc(tc.in)
 		if slices.Equal(sorted, tc.want) == false {
 			t.Errorf("insertionOrderAc: %q, want: %q", tc.in, tc.want)
@@ -27,15 +19,8 @@ func TestInsertionSortAsc(t *testing.T) {
 }
 
 func TestInsertionSortDesc(t *testing.T) {
-	testCases := []struct {
-		in   []int
-		want []int
-	}{
-		{[]int{5, 2, 1, 7, 3, 10, 3, 5, 4}, []int{10, 7, 5, 5, 4, 3, 3, 2, 1}},
-		{[]int{1, 2, 1, 1, 1}, []int{2, 1, 1, 1, 1}},
-	}
 
-	for _, tc := range testCases {
+	for _, tc := range TestCases {
 		sorted := insertionSortDesc(tc.in)
 		if slices.Equal(sorted, tc.want) == false {
 			t.Errorf("insertionOrderDesc: %q, want: %q", tc.in, tc.want)
