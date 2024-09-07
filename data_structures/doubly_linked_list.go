@@ -93,7 +93,7 @@ func (l *DLL) remove(item int) {
 func (l *DLL) removeAt(item int, idx int) {
 
 }
-func (l *DLL) get(idx int) (int, error) {
+func (l *DLL) getAt(idx int) (int, error) {
 	if idx >= l.length {
 		return -1, errors.New("attempting to get at idx larger than DLL size")
 	}

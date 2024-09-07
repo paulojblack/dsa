@@ -29,7 +29,7 @@ func TestDLLAppend(t *testing.T) {
 		t.Errorf("incorrect length, received %v", 11)
 	}
 
-	if v, _ := dll.get(10); v != 1000 {
+	if v, _ := dll.getAt(10); v != 1000 {
 		t.Errorf("wrong value at last index, expected 1000 received %v", v)
 	}
 
@@ -62,7 +62,7 @@ func TestDLLInsertAt(t *testing.T) {
 		t.Errorf("failed to insert at end of dll")
 	}
 
-	if v, _ := dll.get(11); v != 99 {
+	if v, _ := dll.getAt(11); v != 99 {
 		t.Errorf("did not find value 99 at last index, instead: %v", v)
 	}
 
@@ -119,7 +119,7 @@ func TestDLLPrepend(t *testing.T) {
 func TestDLLGet(t *testing.T) {
 	dll := setupDLL()
 
-	val, err := dll.get(4)
+	val, err := dll.getAt(4)
 
 	if err != nil {
 		t.Errorf("error getting expected value 4 %v", err)
@@ -129,7 +129,7 @@ func TestDLLGet(t *testing.T) {
 		t.Errorf("incorrectly received %v instead of 2", val)
 	}
 
-	val, err = dll.get(9)
+	val, err = dll.getAt(9)
 
 	if err != nil {
 		t.Errorf("error getting expected value 15 %v", err)
@@ -139,7 +139,7 @@ func TestDLLGet(t *testing.T) {
 		t.Errorf("incorrectly received %v instead of 15", val)
 	}
 
-	_, err = dll.get(10)
+	_, err = dll.getAt(10)
 
 	if err == nil {
 		t.Errorf("did not correctly throw error when attempting to access index 10 beyond length %v", dll.length)
