@@ -1,21 +1,19 @@
 package ds
 
-import "fmt"
-
 type BSTNode struct {
 	left  *BSTNode
 	right *BSTNode
 	val   int
 }
 
-func walk(root *BSTNode) {
+func preorder(root *BSTNode, result *[]int) {
 	if root == nil {
 		return
 	}
 
-	fmt.Println(root.val)
-	walk(root.left)
-	walk(root.right)
+	*result = append(*result, root.val)
+	preorder(root.left, result)
+	preorder(root.right, result)
 
 }
 
@@ -30,3 +28,31 @@ func insert(root *BSTNode, val int) *BSTNode {
 
 	return root
 }
+
+func find(root *BSTNode, val int) *BSTNode {
+	if root == nil {
+		return nil
+	}
+
+	if root.val == val {
+		return root
+	}
+
+	if root.val > val {
+		return find(root.left, val)
+	}
+
+	// Effectively <= case but should expect no == case
+	return find(root.right, val)
+}
+
+// func delete(root *BSTNode, val int) bool {
+// 	if root == nil {
+// 		// Attempting to delete node that doesn't exist
+// 		return false
+// 	}
+
+// 	if root.left != nil && root.left.val == val {
+
+// 	}
+// }
